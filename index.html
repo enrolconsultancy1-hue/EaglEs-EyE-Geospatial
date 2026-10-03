@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <meta
+      name="description"
+      content="EaglEs EyE — Planetary Situational Awareness & Global 3D Geospatial Intelligence Engine"
+    />
+    <title>EaglEs EyE — Planetary Geospatial Intelligence</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600;700&family=Orbitron:wght@500;700;900&family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body>
+    <!-- Main 3D Cesium Viewport Container -->
+    <div id="cesiumContainer" class="cesium-container"></div>
+
+    <!-- HUD Overlay Architecture -->
+    <div id="hudRoot" class="hud-root">
+      <!-- Top Tactical Bar -->
+      <header class="tactical-header">
+        <div class="brand-badge">
+          <span class="brand-icon">🦅</span>
+          <span class="brand-title">EaglEs EyE</span>
+          <span class="brand-edition">GEOSPATIAL CORE</span>
+        </div>
+        <div class="telemetry-bar" id="telemetryBar">
+          <div class="telemetry-item">
+            <span class="label">UTC:</span>
+            <span class="value" id="hudClock">--:--:--</span>
+          </div>
+          <div class="telemetry-item">
+            <span class="label">SYS:</span>
+            <span class="value status-good" id="hudStatus">ONLINE</span>
+          </div>
+          <div class="telemetry-item">
+            <span class="label">LAT/LON:</span>
+            <span class="value" id="hudCoords">--.----, --.----</span>
+          </div>
+          <div class="telemetry-item">
+            <span class="label">ALT:</span>
+            <span class="value" id="hudAlt">--- km</span>
+          </div>
+        </div>
+      </header>
+
+      <!-- Tactical Control Dock (Phase 6 preparation) -->
+      <aside class="layer-dock" id="layerDock">
+        <div class="dock-header">
+          <h3>LAYER MATRIX</h3>
+          <span class="dock-indicator" id="layerCountIndicator">0 ACTIVE</span>
+        </div>
+        <div class="dock-body" id="layerList">
+          <div class="layer-empty-notice">
+            System initializing... Ready for Phase 2-6 Layer controllers.
+          </div>
+        </div>
+      </aside>
+
+      <!-- Bottom Diagnostics Panel -->
+      <footer class="tactical-footer">
+        <div class="gateway-status" id="gatewayStatus">
+          <span class="ping-dot" id="pingDot"></span>
+          <span id="gatewayStatusText">Connecting to Gateway...</span>
+        </div>
+        <div class="engine-badge">
+          CesiumJS WGS84 • Redis GEO • Layered Core
+        </div>
+      </footer>
+    </div>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

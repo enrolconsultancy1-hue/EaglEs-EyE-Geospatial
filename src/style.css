@@ -1,0 +1,232 @@
+/* ==========================================================================
+   EaglEs EyE — Foundational Tactical Styling & Design Tokens
+   ========================================================================== */
+
+:root {
+  --font-mono: 'JetBrains Mono', monospace;
+  --font-display: 'Orbitron', sans-serif;
+  --font-body: 'Inter', sans-serif;
+
+  /* Colors */
+  --color-bg: #07090e;
+  --color-surface: rgba(14, 19, 29, 0.75);
+  --color-surface-hover: rgba(22, 30, 46, 0.85);
+  --color-border: rgba(45, 62, 80, 0.5);
+  --color-border-accent: rgba(0, 229, 255, 0.4);
+
+  --color-cyan: #00e5ff;
+  --color-cyan-dim: rgba(0, 229, 255, 0.2);
+  --color-amber: #ffb300;
+  --color-emerald: #00e676;
+  --color-crimson: #ff1744;
+  --color-text-primary: #f0f4f8;
+  --color-text-secondary: #8ba2b9;
+  --color-text-muted: #536b82;
+
+  --backdrop-blur: blur(12px);
+  --tactical-glow: 0 0 16px rgba(0, 229, 255, 0.25);
+  --transition-fast: 0.15s ease;
+  --transition-normal: 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: var(--color-bg);
+  font-family: var(--font-body);
+  color: var(--color-text-primary);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 3D Cesium Container */
+.cesium-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  background: radial-gradient(circle at center, #0e1726 0%, #05080e 100%);
+}
+
+/* HUD Overlay Layer */
+.hud-root {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1rem;
+}
+
+.hud-root > * {
+  pointer-events: auto;
+}
+
+/* Top Tactical Header */
+.tactical-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--color-surface);
+  backdrop-filter: var(--backdrop-blur);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: 0.75rem 1.25rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+.brand-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.brand-icon {
+  font-size: 1.5rem;
+  filter: drop-shadow(0 0 8px var(--color-cyan));
+}
+
+.brand-title {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #ffffff;
+  background: linear-gradient(135deg, #ffffff 0%, var(--color-cyan) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.brand-edition {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  padding: 0.2rem 0.5rem;
+  background: var(--color-cyan-dim);
+  border: 1px solid var(--color-border-accent);
+  border-radius: 4px;
+  color: var(--color-cyan);
+}
+
+.telemetry-bar {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+}
+
+.telemetry-item {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.telemetry-item .label {
+  color: var(--color-text-muted);
+}
+
+.telemetry-item .value {
+  color: var(--color-text-secondary);
+  font-weight: 600;
+}
+
+.status-good {
+  color: var(--color-emerald) !important;
+  text-shadow: 0 0 8px rgba(0, 230, 118, 0.4);
+}
+
+/* Layer Control Dock */
+.layer-dock {
+  width: 320px;
+  background: var(--color-surface);
+  backdrop-filter: var(--backdrop-blur);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  overflow: hidden;
+  align-self: flex-start;
+  margin-top: 1rem;
+}
+
+.dock-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--color-border);
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+}
+
+.dock-indicator {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--color-cyan);
+}
+
+.dock-body {
+  padding: 1rem;
+}
+
+.layer-empty-notice {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  line-height: 1.5;
+  font-family: var(--font-mono);
+}
+
+/* Bottom Diagnostics Footer */
+.tactical-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--color-surface);
+  backdrop-filter: var(--backdrop-blur);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: 0.6rem 1.25rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+.gateway-status {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.ping-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--color-amber);
+  box-shadow: 0 0 8px var(--color-amber);
+  transition: background-color var(--transition-normal);
+}
+
+.ping-dot.connected {
+  background-color: var(--color-emerald);
+  box-shadow: 0 0 8px var(--color-emerald);
+}
+
+.engine-badge {
+  color: var(--color-text-muted);
+}

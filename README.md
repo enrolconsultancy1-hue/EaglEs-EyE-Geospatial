@@ -12,7 +12,7 @@
 [![Redis](https://img.shields.io/badge/Redis-GEO%20Cache-DC382D?logo=redis&logoColor=white)](https://redis.io/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-*An independent, enterprise-grade, high-performance geospatial intelligence operating platform fusing real-time planetary telemetry onto a 3D WGS84 digital globe.*
+_An independent, enterprise-grade, high-performance geospatial intelligence operating platform fusing real-time planetary telemetry onto a 3D WGS84 digital globe._
 
 </div>
 
@@ -84,15 +84,15 @@ Detailed architectural contracts, data flow sequences, and module boundaries are
 
 ## 🛠️ Technology Stack
 
-| Component | Technology | Rationale |
-|---|---|---|
-| **Frontend Runtime** | Modern Web / ES Modules + HTML5 | Zero-overhead, reactive DOM-based HUD overlays with CSS custom properties |
-| **3D Geospatial Engine** | CesiumJS (WebGL / WGS84) | Precision high-framerate rendering of terrain, satellite orbits, 3D tiles, and vectors |
-| **Backend & API Proxy** | Node.js (TypeScript) + Express | Asynchronous high-throughput I/O gateway for proxying 63 external telemetry APIs |
-| **Development Server** | Vite | Lightning-fast HMR and seamless proxying of backend endpoints during local iteration |
-| **Spatial Persistence** | Redis (In-Memory Key-Value & GEO) | Microsecond spatial range queries (`GEORADIUSBYMEMBER`, `GEOADD`) and TTL cache |
-| **Containerization** | Docker + Docker Compose | Multi-stage lightweight production builds with automated health checks |
-| **Reverse Proxy & Edge** | Nginx | High-concurrency static asset delivery, SSL termination, and rate-limiting enforcement |
+| Component                | Technology                        | Rationale                                                                              |
+| ------------------------ | --------------------------------- | -------------------------------------------------------------------------------------- |
+| **Frontend Runtime**     | Modern Web / ES Modules + HTML5   | Zero-overhead, reactive DOM-based HUD overlays with CSS custom properties              |
+| **3D Geospatial Engine** | CesiumJS (WebGL / WGS84)          | Precision high-framerate rendering of terrain, satellite orbits, 3D tiles, and vectors |
+| **Backend & API Proxy**  | Node.js (TypeScript) + Express    | Asynchronous high-throughput I/O gateway for proxying 63 external telemetry APIs       |
+| **Development Server**   | Vite                              | Lightning-fast HMR and seamless proxying of backend endpoints during local iteration   |
+| **Spatial Persistence**  | Redis (In-Memory Key-Value & GEO) | Microsecond spatial range queries (`GEORADIUSBYMEMBER`, `GEOADD`) and TTL cache        |
+| **Containerization**     | Docker + Docker Compose           | Multi-stage lightweight production builds with automated health checks                 |
+| **Reverse Proxy & Edge** | Nginx                             | High-concurrency static asset delivery, SSL termination, and rate-limiting enforcement |
 
 ---
 
@@ -100,16 +100,16 @@ Detailed architectural contracts, data flow sequences, and module boundaries are
 
 All external API integrations run through dedicated backend proxy controllers to prevent client credential leakage and enforce token-bucket rate limiting:
 
-| Domain | Key Endpoints | Source Feeds |
-|---|---|---|
-| **Aviation** | `/api/adsblol/mil`, `/api/adsb-lol`, `/api/adsbdb`, `/api/opensky`, `/api/open-sky`, `/api/opensky-track`, `/api/adsblol/trace` | ADS-B Lol, OpenSky Network, ADSBdb |
-| **Maritime** | `/api/ais-live` | AISStream WebSocket & REST |
-| **Atmosphere & Disasters** | `/api/weather`, `/api/wind`, `/api/weather-effects`, `/api/cyclones`, `/api/cyclone`, `/api/fire-perimeters`, `/api/firms` | Open-Meteo, NWS, NASA FIRMS, JTWC/NHC |
-| **Urban & Infrastructure** | `/api/cctv`, `/api/transit`, `/api/gbfs`, `/api/tomtom`, `/api/traffic` | Global DOT Cameras, Transitland, GBFS |
-| **Orbital & Space** | `/api/celestrak`, `/api/launches`, `/api/rocket-launches` | CelesTrak NORAD TLE, Launch Library 2 |
-| **Geographic Intelligence** | `/api/overpass`, `/api/geocode`, `/api/terrain/heights`, `/api/terrain-heights`, `/api/route`, `/api/google/*` | OpenStreetMap Overpass, Google Places API |
-| **Tactical & Voice AI** | `/api/military-installations`, `/api/local-receivers`, `/api/regional-brief`, `/api/openai/*`, `/api/realtime/*` | Defense open repositories, OpenAI Realtime WebRTC |
-| **System Operations** | `/api`, `/api/setup/status`, `/api/setup/keys`, `/api/live` | Health telemetry, diagnostic doctor, live pipeline status |
+| Domain                      | Key Endpoints                                                                                                                   | Source Feeds                                              |
+| --------------------------- | ------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------- |
+| **Aviation**                | `/api/adsblol/mil`, `/api/adsb-lol`, `/api/adsbdb`, `/api/opensky`, `/api/open-sky`, `/api/opensky-track`, `/api/adsblol/trace` | ADS-B Lol, OpenSky Network, ADSBdb                        |
+| **Maritime**                | `/api/ais-live`                                                                                                                 | AISStream WebSocket & REST                                |
+| **Atmosphere & Disasters**  | `/api/weather`, `/api/wind`, `/api/weather-effects`, `/api/cyclones`, `/api/cyclone`, `/api/fire-perimeters`, `/api/firms`      | Open-Meteo, NWS, NASA FIRMS, JTWC/NHC                     |
+| **Urban & Infrastructure**  | `/api/cctv`, `/api/transit`, `/api/gbfs`, `/api/tomtom`, `/api/traffic`                                                         | Global DOT Cameras, Transitland, GBFS                     |
+| **Orbital & Space**         | `/api/celestrak`, `/api/launches`, `/api/rocket-launches`                                                                       | CelesTrak NORAD TLE, Launch Library 2                     |
+| **Geographic Intelligence** | `/api/overpass`, `/api/geocode`, `/api/terrain/heights`, `/api/terrain-heights`, `/api/route`, `/api/google/*`                  | OpenStreetMap Overpass, Google Places API                 |
+| **Tactical & Voice AI**     | `/api/military-installations`, `/api/local-receivers`, `/api/regional-brief`, `/api/openai/*`, `/api/realtime/*`                | Defense open repositories, OpenAI Realtime WebRTC         |
+| **System Operations**       | `/api`, `/api/setup/status`, `/api/setup/keys`, `/api/live`                                                                     | Health telemetry, diagnostic doctor, live pipeline status |
 
 ---
 
@@ -132,32 +132,38 @@ Execution follows the strict phase-by-phase blueprint:
 ## ⚡ Quick Start
 
 ### Prerequisites
+
 - **Node.js:** `>= 20.0.0`
 - **npm:** `>= 10.0.0`
 - **Redis:** `>= 7.0` (Optional for local mocked dev; required for live geospatial caching)
 - **Cesium Ion Token:** Free token from [cesium.com](https://cesium.com/ion/)
 
 ### 1. Clone & Setup
+
 ```bash
 git clone https://github.com/enrolconsultancy1-hue/EaglEs-EyE-Geospatial.git
 cd EaglEs-EyE-Geospatial
 ```
 
 ### 2. Configure Environment
+
 ```bash
 cp .env.example .env
 # Edit .env to add your Cesium Ion Token and optional third-party API keys
 ```
 
 ### 3. Install Dependencies
+
 ```bash
 npm install
 ```
 
 ### 4. Run Development Server
+
 ```bash
 npm run dev
 ```
+
 Navigate to `http://localhost:5173` to explore the 3D globe.
 
 ---

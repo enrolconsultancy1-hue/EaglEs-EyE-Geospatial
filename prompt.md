@@ -7,6 +7,7 @@
 ---
 
 ## Technology Stack
+
 - backend-language: TypeScript / JavaScript (Node.js)
 - http-api: Vite Dev Server / Express Middleware
 - 3d-geospatial-engine: CesiumJS (3D WebGL / WGS84 Globe)
@@ -14,9 +15,11 @@
 - persistence: Redis (In-Memory Key-Value & Geospatial Store)
 
 ## Architecture Pattern: Layered Architecture
+
 Layers: application, background, cli, client, configuration, domain, entrypoint, persistence, presentation, provider, tooling
 
 ## Implementation Order
+
 1. Project scaffold + configuration + logging
 2. Domain model (entities and relationships)
 3. Persistence layer (Redis repositories)

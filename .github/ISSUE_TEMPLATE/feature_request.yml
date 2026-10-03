@@ -1,6 +1,6 @@
 name: 💡 Feature Request
 description: Propose a new telemetry provider, 3D visualization layer, or system enhancement
-labels: ["enhancement"]
+labels: ['enhancement']
 body:
   - type: markdown
     attributes:
@@ -12,7 +12,7 @@ body:
     attributes:
       label: Feature Summary
       description: Concise summary of what you are proposing.
-      placeholder: "e.g., Integrate real-time seismological earthquake epicenter feed from USGS"
+      placeholder: 'e.g., Integrate real-time seismological earthquake epicenter feed from USGS'
     validations:
       required: true
 

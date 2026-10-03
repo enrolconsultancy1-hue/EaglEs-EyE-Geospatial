@@ -1,6 +1,6 @@
 name: 🐛 Bug Report
 description: Report a bug, crash, or rendering issue in EaglEs EyE
-labels: ["bug"]
+labels: ['bug']
 body:
   - type: markdown
     attributes:
@@ -12,7 +12,7 @@ body:
     attributes:
       label: Bug Description
       description: A clear and concise description of what the bug is.
-      placeholder: "e.g., ADS-B flight layer causes billboard flickering when zooming into high-density airspace..."
+      placeholder: 'e.g., ADS-B flight layer causes billboard flickering when zooming into high-density airspace...'
     validations:
       required: true
 
@@ -21,14 +21,14 @@ body:
     attributes:
       label: Architectural Layer Affected
       options:
-        - "Presentation Layer (HUD, Panels, Audio)"
-        - "Client Layer (CesiumJS 3D Viewport)"
-        - "API Gateway & Proxies (/api/*)"
-        - "Provider Plugins (ADS-B, AIS, Weather, FIRMS, etc.)"
-        - "Persistence (Redis GEO Cache)"
-        - "Background Ingestion Workers"
-        - "Deployment / Docker"
-        - "Other / Unknown"
+        - 'Presentation Layer (HUD, Panels, Audio)'
+        - 'Client Layer (CesiumJS 3D Viewport)'
+        - 'API Gateway & Proxies (/api/*)'
+        - 'Provider Plugins (ADS-B, AIS, Weather, FIRMS, etc.)'
+        - 'Persistence (Redis GEO Cache)'
+        - 'Background Ingestion Workers'
+        - 'Deployment / Docker'
+        - 'Other / Unknown'
     validations:
       required: true
 
