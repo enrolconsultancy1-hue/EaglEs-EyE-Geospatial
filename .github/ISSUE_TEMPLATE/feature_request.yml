@@ -1,0 +1,33 @@
+name: 💡 Feature Request
+description: Propose a new telemetry provider, 3D visualization layer, or system enhancement
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Have an idea for **EaglEs EyE**? We welcome telemetry layer proposals, visual effect concepts, and architecture enhancements!
+
+  - type: textarea
+    id: summary
+    attributes:
+      label: Feature Summary
+      description: Concise summary of what you are proposing.
+      placeholder: "e.g., Integrate real-time seismological earthquake epicenter feed from USGS"
+    validations:
+      required: true
+
+  - type: textarea
+    id: motivation
+    attributes:
+      label: Motivation & Problem Solved
+      description: What problem or operational scenario does this feature address?
+    validations:
+      required: true
+
+  - type: textarea
+    id: technical-approach
+    attributes:
+      label: Suggested Technical Implementation
+      description: What telemetry API, CesiumJS rendering primitive, or Redis storage model would this use?
+    validations:
+      required: false

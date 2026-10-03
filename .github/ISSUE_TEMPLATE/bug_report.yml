@@ -1,0 +1,59 @@
+name: 🐛 Bug Report
+description: Report a bug, crash, or rendering issue in EaglEs EyE
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for helping improve **EaglEs EyE**! Please ensure you test against the latest `main` branch before submitting.
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Bug Description
+      description: A clear and concise description of what the bug is.
+      placeholder: "e.g., ADS-B flight layer causes billboard flickering when zooming into high-density airspace..."
+    validations:
+      required: true
+
+  - type: dropdown
+    id: layer
+    attributes:
+      label: Architectural Layer Affected
+      options:
+        - "Presentation Layer (HUD, Panels, Audio)"
+        - "Client Layer (CesiumJS 3D Viewport)"
+        - "API Gateway & Proxies (/api/*)"
+        - "Provider Plugins (ADS-B, AIS, Weather, FIRMS, etc.)"
+        - "Persistence (Redis GEO Cache)"
+        - "Background Ingestion Workers"
+        - "Deployment / Docker"
+        - "Other / Unknown"
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Steps to Reproduce
+      description: How can maintainers reproduce the issue?
+      placeholder: |
+        1. Start app with `npm run dev`
+        2. Toggle on "Aviation" layer
+        3. Pan camera to coordinates [lat, lon]
+        4. Observe error in console
+    validations:
+      required: true
+
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment & Hardware
+      description: OS, Node.js version, browser, GPU
+      placeholder: |
+        - OS: Windows 11 / Ubuntu 22.04 / macOS
+        - Browser: Chrome 124 / Firefox 125
+        - Node.js: v20.12.0
+        - GPU: NVIDIA RTX 4070 / Apple M2
+    validations:
+      required: false
